@@ -84,13 +84,7 @@ export default () => {
       </Button>
 
       {show &&
-        <>
-          <Text style={styles.show}>{amount} {from} = {calc(amount)} {to}</Text>
-          <Text style={styles.show}>Recebido:</Text>
-          <Text style={styles.show}>amount: {amount}</Text>
-          <Text style={styles.show}>from: {from}</Text>
-          <Text style={styles.show}>to: {to}</Text>
-        </>
+        <Text style={styles.show}>{amount} {from} = {calc(amount)} {to}</Text>
       }
     </SafeAreaView>
   )

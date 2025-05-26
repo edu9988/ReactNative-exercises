@@ -1,6 +1,6 @@
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { Ionicons, SimpleLineIcons, MaterialIcons } from '@expo/vector-icons'
 import { View } from 'react-native'
 
@@ -8,7 +8,13 @@ import Personal from './screens/Personal'
 import Education from './screens/Education'
 import Experience from './screens/Experience'
 
-const Tab = createBottomTabNavigator()
+const Tab = createMaterialTopTabNavigator()
+
+const iconNames = {
+  Personal: "person-circle-outline",
+  Education: "",
+  Experience: "work"
+}
 
 export default () => (
   <SafeAreaProvider>
@@ -19,7 +25,7 @@ export default () => (
           screenOptions={ ({ route }) => ({
             headerShown: false,
             tabBarStyle: {
-              height: 65
+              height: 70
             },
             tabBarShowLabel: false,
             tabBarItemStyle: {

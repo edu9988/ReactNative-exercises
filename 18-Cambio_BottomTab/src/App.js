@@ -1,21 +1,21 @@
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Ionicons, SimpleLineIcons, MaterialIcons } from '@expo/vector-icons'
+import { Ionicons, FontAwesome5, FontAwesome6 } from '@expo/vector-icons'
 import { View } from 'react-native'
 
-import Personal from './screens/Personal'
-import Education from './screens/Education'
-import Experience from './screens/Experience'
+import Header from './components/Header'
+import CurrencyConverter from './screens/CurrencyConverter'
 
 const Tab = createBottomTabNavigator()
 
 export default () => (
   <SafeAreaProvider>
     <SafeAreaView style={{flex: 1}}>
+      <Header />
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="Personal"
+          initialRouteName="USD"
           screenOptions={ ({ route }) => ({
             headerShown: false,
             tabBarStyle: {
@@ -33,16 +33,16 @@ export default () => (
                 height: 60,
                 marginVertical: 'auto',
               }}>
-                { route.name === 'Personal' && <Ionicons name="person" size={50} color={color}/>}
-                { route.name === 'Education' && <SimpleLineIcons name="graduation" size={50} color={color}/>}
-                { route.name === 'Experience' && <MaterialIcons name="work" size={50} color={color}/>}
+                { route.name === 'USD' && <Ionicons name="logo-usd" size={50} color={color}/>}
+                { route.name === 'EUR' && <FontAwesome5 name="euro-sign" size={50} color={color}/>}
+                { route.name === 'BTC' && <FontAwesome6 name="bitcoin" size={50} color={color}/>}
               </View>
             )
           })}
         >
-          <Tab.Screen name="Personal" component={Personal} />
-          <Tab.Screen name="Education" component={Education} />
-          <Tab.Screen name="Experience" component={Experience} />
+          <Tab.Screen name="USD" component={CurrencyConverter} initialParams={{ to: "USD" }}/>
+          <Tab.Screen name="EUR" component={CurrencyConverter} initialParams={{ to: "EUR" }}/>
+          <Tab.Screen name="BTC" component={CurrencyConverter} initialParams={{ to: "BTC" }}/>
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>
